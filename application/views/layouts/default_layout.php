@@ -12,8 +12,25 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/css/style.scss">
     <link rel="icon" type="image/x-icon" href="<?php echo base_url() ?>/public/img/tour-to-japan-logo.png" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>/public/common/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/public/css/modalanimate.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- page specific plugin styles -->
+
+    <!-- scripts -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Remember to include jQuery :) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+    <script src="<?php echo base_url() ?>/public/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>/public/js/animations.js"></script>
+    <script src="<?php echo base_url() ?>/public/js/modelAnimate.js"></script>
 </head>
 
 <body>
@@ -47,15 +64,35 @@
                                                     </span>
                                                 </div>
 
-                                                <div class="city-bg">
-                                                    <img src="<?php echo base_url() ?>/public/img/tokyo/tokyo-card-bg-2.jpg" alt="tokyo-cherry-blossom">
-                                                </div>
+                                                <div class="city-details-flip flip">
+                                                    <div class="detail-box">
+                                                        <div class="city-bg face front">
+                                                            <img src="<?php echo base_url() ?>/public/img/tokyo/tokyo-card-bg-2.jpg" alt="tokyo-senso-ji-temple">
+                                                        </div>
 
-                                                <div class="city-info">
-                                                    <span>
-                                                        A paradise-like oasis of green in the heart of busy Tokyo, Ueno Park is the city's largest green space and one of its most popular tourist attractions.
-                                                        Address: 9-83, Ueno Park, Tokyo, Kanto 110-8711
-                                                    </span>
+                                                        <div class="city-info face back">
+                                                            <span>
+                                                                <!-- A paradise-like oasis of green in the heart of busy Tokyo, Ueno
+                                                                Park is the city's largest green space and one of its most
+                                                                popular tourist attractions.
+                                                                Address: 9-83, Ueno Park, Tokyo, Kanto 110-8711 -->
+                                                                In the Asakusa district of Tokyo, the exquisite Sensō-ji
+                                                                Temple - the city's most famous shrine - stands at the
+                                                                end of a long street market hosting vendors selling
+                                                                masks, carvings, combs made of ebony and wood, toys,
+                                                                kimonos, fabrics, and precious paper goods.
+                                                                Address: 2 Chome-3-1 Asakusa, Taito, Tokyo 111-0032
+                                                            </span>
+
+                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn" rel="modal:open">
+                                                                <span>
+                                                                    See more
+                                                                </span>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -69,7 +106,36 @@
                                 <div class="card-container">
                                     <div class="card-body">
                                         <div class="card-content">
-                                            Yokohama
+                                            <div class="city-details">
+                                                <div class="card-title">
+                                                    <span>
+                                                        <i class="fas fa-map-marker-alt"></i> Yokohama
+                                                    </span>
+                                                </div>
+
+                                                <div class="city-details-flip flip">
+                                                    <div class="detail-box">
+                                                        <div class="city-bg face front">
+                                                            <img src="<?php echo base_url() ?>/public/img/yokohama/yokohama-card-bg-4.jpg" alt="yokohama-city">
+                                                        </div>
+
+                                                        <div class="city-info face back">
+                                                            <span>
+                                                                City of Yokohama is known for its history as flourished port
+                                                                town, where unique culture is presented. It is considered as a
+                                                                city of culture, shopping,
+                                                                entertainment, and gourmet.
+                                                            </span>
+
+                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
+                                                                <span>
+                                                                    See more
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +147,36 @@
                                 <div class="card-container">
                                     <div class="card-body">
                                         <div class="card-content">
-                                            Kyoto
+                                            <div class="city-details">
+                                                <div class="card-title">
+                                                    <span>
+                                                        <i class="fas fa-map-marker-alt"></i> Kyoto
+                                                    </span>
+                                                </div>
+
+                                                <div class="city-details-flip flip">
+                                                    <div class="detail-box">
+                                                        <div class="city-bg face front">
+                                                            <img src="<?php echo base_url() ?>/public/img/kyoto/kyoto-card-bg-2.jpg" alt="kyoto-golden-pavilion">
+                                                        </div>
+
+                                                        <div class="city-info face back">
+                                                            <span>
+                                                                The Golden Pavilion temple has three stories, and they
+                                                                seamlessly incorporate three major Japanese styles of
+                                                                architecture:
+                                                                Samurai, Zen and Shinden.
+                                                            </span>
+
+                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
+                                                                <span>
+                                                                    See more
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +190,35 @@
                                 <div class="card-container">
                                     <div class="card-body">
                                         <div class="card-content">
-                                            Osaka
+                                            <div class="city-details">
+                                                <div class="card-title">
+                                                    <span>
+                                                        <i class="fas fa-map-marker-alt"></i> Osaka
+                                                    </span>
+                                                </div>
+
+                                                <div class="city-details-flip flip">
+                                                    <div class="detail-box">
+                                                        <div class="city-bg face front">
+                                                            <img src="<?php echo base_url() ?>/public/img/osaka/osaka-card-bg-1.jpg" alt="osaka-cherry-blossom-tree">
+                                                        </div>
+
+                                                        <div class="city-info face back">
+                                                            <span>
+                                                                About 800 cherry trees line the moat of this pretty little
+                                                                (reconstructed) castle. It is a popular spot for night viewing
+                                                                of the blossoms, which are lit up by around 600 paper lanterns.
+                                                            </span>
+
+                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
+                                                                <span>
+                                                                    See more
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +230,34 @@
                                 <div class="card-container">
                                     <div class="card-body">
                                         <div class="card-content">
-                                            Sapporo
+                                            <div class="city-details">
+                                                <div class="card-title">
+                                                    <span>
+                                                        <i class="fas fa-map-marker-alt"></i> Sapporo
+                                                    </span>
+                                                </div>
+
+                                                <div class="city-detail-flip flip">
+                                                    <div class="detail-box">
+                                                        <div class="city-bg face front">
+                                                            <img src="<?php echo base_url() ?>/public/img/sapporo/sapporo-card-bg-6.jpg" alt="sapporo jozankei onsen">
+                                                        </div>
+
+                                                        <div class="city-info face back">
+                                                            <span>
+                                                                “Sapporo’s Annex” — The valley in the hot springs district with
+                                                                history and popularity that continues to charm
+                                                            </span>
+
+                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
+                                                                <span>
+                                                                    See more
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -119,13 +269,55 @@
                                 <div class="card-container">
                                     <div class="card-body">
                                         <div class="card-content">
-                                            Nagoya
+                                            <div class="city-details">
+                                                <div class="card-title">
+                                                    <span>
+                                                        <i class="fas fa-map-marker-alt"></i> Nagoya
+                                                    </span>
+                                                </div>
+
+                                                <div class="city-detail-flip flip">
+                                                    <div class="detail-box">
+                                                        <div class="city-bg face front">
+                                                            <img src="<?php echo base_url() ?>/public/img/nagoya/nagoya-card-bg-5.jpg" alt="nagoya-tv-tower">
+                                                        </div>
+
+                                                        <div class="city-info face back">
+                                                            <span>
+                                                                Nagoya TV Tower is one of the main landmarks in Nagoya and soars
+                                                                to a height of some 180 meters. It also has the claim to fame of
+                                                                being the oldest
+                                                                of its kind in Japan.
+                                                            </span>
+
+                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
+                                                                <span>
+                                                                    See more
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal-container">
+            <div class="modal-background">
+                <div class="modal">
+                    <h2>I'm a <a href="https://www.jqueryscript.net/tags.php?/Modal/">Modal</a></h2>
+                    <p>Hear me roar.</p>
+                    <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                        <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+                    </svg>
                 </div>
             </div>
         </div>
