@@ -10,9 +10,9 @@ html, body{
     z-index: 2;
     font-family: 'Poppins', sans-serif;
 
-    &.modal-active {
-      overflow: hidden;
-    }
+    // &.modal-active {
+    //   overflow: hidden;
+    // }
 }
 
 .wrapper {
@@ -53,7 +53,7 @@ html, body{
 #top-background div {
     display: flex;
     /* display: contents; */
-    position: relative;
+    // position: relative;
 }
 
 #top-background div .bg-img {
@@ -66,21 +66,38 @@ html, body{
 }
 
 #top-background h1#page-title {
-    text-align: center;
-    height: auto;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #fff;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
-    font-size: 70px;
-    margin-top: 36px;
-    font-family: 'Poppins', sans-serif;
+  text-align: center;
+  height: auto;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #fff;
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  font-size: 70px;
+  margin-top: 36px;
+  font-family: 'Poppins', sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
 .red {
     color: #CB2120;
 }
 
-.std-algn {
+.main-heading {
+  max-width: 1024px;
+  margin-left: calc((100% - 1024px) / 2);
+  margin-right: calc((100% - 1024px) / 2);
+}
+.subtitle-heading {
+  font-size: 48px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fff;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.std-align {
     max-width: calc(100% - 30px);
     margin-left: 15px;
     margin-right: 15px;
@@ -180,6 +197,10 @@ html, body{
     text-align: justify;
 }
 
+.city-info span {
+  font-size: 14px;
+}
+
 /*
 * Flip card animation
 **/
@@ -251,9 +272,12 @@ html, body{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: #CB2120;
     color: white;
-	  left: 41px;
+	  left: 42px;
     border-radius: 3px;
-    cursor: pointer;
+  }
+
+  .see-more-container span {
+    font-size: 14px;
   }
 
   .see-more-container::before {
@@ -837,3 +861,303 @@ html, body{
     }
   }
 
+
+  .snip1190 {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    /* margin: 10px; */
+    /* min-width: 220px;
+    max-width: 310px;
+    max-height: 220px; */
+    width: 100%;
+    background: #000000;
+    text-align: center;
+    cursor: pointer;
+  }
+  .snip1190 * {
+    -webkit-box-sizing: padding-box;
+    box-sizing: padding-box;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .snip1190 img {
+    opacity: 0.8;
+    width: 100%;
+  }
+  .snip1190 figcaption {
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .snip1190 h2 {
+    font-weight: 400;
+    left: 0;
+    right: 0;
+    letter-spacing: -1px;
+    margin: 0 auto;
+    position: absolute;
+    /* text-transform: uppercase; */
+    bottom: 50%;
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+  .snip1190 h2 span {
+    font-weight: 800;
+  }
+  .snip1190 p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    opacity: 0;
+    font-size: 14px;
+    -webkit-transform: translateY(-20%) scale(0.7);
+    transform: translateY(-20%) scale(0.7);
+  }
+  .snip1190 .square {
+    height: 78px;
+    width: 78px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: '';
+    -webkit-transform: rotate(45deg) translate(-50%, -50%);
+    transform: rotate(45deg) translate(-50%, -50%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+  }
+  .snip1190 .square:before,
+  .snip1190 .square:after,
+  .snip1190 .square div:before,
+  .snip1190 .square div:after {
+    background-color: #ffffff;
+    position: absolute;
+    content: "";
+    display: block;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  .snip1190 .square:before,
+  .snip1190 .square:after {
+    width: 65%;
+    height: 2px;
+  }
+  .snip1190 .square div:before,
+  .snip1190 .square div:after {
+    width: 2px;
+    height: 65%;
+  }
+  .snip1190 .square:before,
+  .snip1190 .square div:before {
+    left: 0;
+    top: 0;
+  }
+  .snip1190 .square:after,
+  .snip1190 .square div:after {
+    bottom: 0;
+    right: 0;
+  }
+  .snip1190 a {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+  }
+  .snip1190:hover img,
+  .snip1190.hover img {
+    opacity: 0.25;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  .snip1190:hover h2,
+  .snip1190.hover h2 {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  .snip1190:hover p,
+  .snip1190.hover p {
+    opacity: 1;
+    -webkit-transform: translateY(0px) scale(1);
+    transform: translateY(0px) scale(1);
+  }
+  .snip1190:hover .square:before,
+  .snip1190.hover .square:before {
+    width: 38%;
+  }
+  .snip1190:hover .square div:before,
+  .snip1190.hover .square div:before {
+    height: 38%;
+  }
+  .snip1190:hover .square:after,
+  .snip1190.hover .square:after {
+    width: 55%;
+  }
+  .snip1190:hover .square div:after,
+  .snip1190.hover .square div:after {
+    height: 55%;
+  }
+
+
+  /**
+  *** Modals CSS
+  **/
+
+  .modal-box {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    width: 98%;
+    background: white;
+    border-bottom: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-clip: padding-box;
+    
+  }
+  
+  .modal-box header,
+  .modal-box .modal-header {
+    padding: 1.25em 1.5em;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .modal-box header h3,
+  .modal-box header h4,
+  .modal-box .modal-header h3,
+  .modal-box .modal-header h4 {
+    margin: 0;
+  }
+  
+  .modal-box .modal-body {
+    padding: 2em 1.5em;
+  }
+  
+  .modal-box footer,
+  .modal-box .modal-footer {
+    padding: 1em;
+    border-top: 1px solid #ddd;
+    background: rgba(0, 0, 0, 0.02);
+    text-align: right;
+  }
+  
+  .modal-overlay {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0, 0, 0, 0.3) !important; */
+    background: rgba(0, 0, 0, 0.7) !important;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.59, -0.17, 0.3, 1.67);
+  }
+  
+  .close {
+    line-height: 1;
+    font-size: 1.5em;
+    position: absolute;
+    top: 5%;
+    right: 2%;
+    text-decoration: none;
+    color: #bbb;
+  }
+  
+  a.close:hover {
+    color: #222;
+    -webkit-transition: color 1s ease;
+    -moz-transition: color 1s ease;
+    transition: color 1s ease;
+  }
+  
+  @media (min-width: 32em) {
+    .modal-box {
+        width: 80%;
+      /* width: 400px; */
+      /* height: 100%; */
+    }
+  }
+
+  
+  /***
+  ** RWD for all devices
+  */
+
+  @media (min-width: 320px) {
+    .row {
+      display: block !important;
+    }
+    #top-background h1#page-title {
+      margin-left: -5px;
+    }
+    .flip .detail-box .back {
+      line-height: 1.2;
+    }
+  }
+    
+  
+  @media (max-width: 480px) and (min-width: 320px) {
+      
+  }
+  
+  @media (max-width: 600px) and (min-width: 480px) {
+      
+  }
+  
+  @media (max-width: 768px) and (min-width: 600px) {
+      
+  }
+  
+  @media (max-width: 900px) and (min-width: 768px) {
+      
+  }
+  
+  @media (max-width: 1024px) and (min-width: 900px) {
+      
+  }
+  
+  @media (max-width: 1200px) {
+      
+  }
+
+/* @media only screen (min-width: 320px) {
+  
+}
+  
+
+@media only screen (max-width: 480px) and (min-width: 320px) {
+    
+}
+
+@media only screen (max-width: 600px) and (min-width: 480px) {
+    
+}
+
+@media only screen (max-width: 768px) and (min-width: 600px) {
+    
+}
+
+@media only screen (max-width: 900px) and (min-width: 768px) {
+    
+}
+
+@media only screen (max-width: 1024px) and (min-width: 900px) {
+    
+}
+
+@media only screen (max-width: 1200px) {
+    
+} */

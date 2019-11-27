@@ -20,17 +20,13 @@
 
     <!-- scripts -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Remember to include jQuery :) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-
-    <!-- jQuery Modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src="<?php echo base_url() ?>/public/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>/public/js/animations.js"></script>
-    <script src="<?php echo base_url() ?>/public/js/modelAnimate.js"></script>
 </head>
 
 <body>
@@ -67,7 +63,16 @@
                                                 <div class="city-details-flip flip">
                                                     <div class="detail-box">
                                                         <div class="city-bg face front">
-                                                            <img src="<?php echo base_url() ?>/public/img/tokyo/tokyo-card-bg-2.jpg" alt="tokyo-senso-ji-temple">
+                                                            <div class="inner snip1190">
+                                                                <img src="<?php echo base_url() ?>/public/img/tokyo/tokyo-card-bg-2.jpg" alt="tokyo-senso-ji-temple">
+                                                                <figcaption>
+                                                                    <div class="square">
+                                                                        <div></div>
+                                                                    </div>
+                                                                    <h2>Sensōji<span> Temple</span></h2>
+                                                                    <p>Buddhist temple in Asakusa</p>
+                                                                </figcaption>
+                                                            </div>
                                                         </div>
 
                                                         <div class="city-info face back">
@@ -84,7 +89,7 @@
                                                                 Address: 2 Chome-3-1 Asakusa, Taito, Tokyo 111-0032
                                                             </span>
 
-                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn" rel="modal:open">
+                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn" data-modal-id="popup">
                                                                 <span>
                                                                     See more
                                                                 </span>
@@ -116,7 +121,20 @@
                                                 <div class="city-details-flip flip">
                                                     <div class="detail-box">
                                                         <div class="city-bg face front">
-                                                            <img src="<?php echo base_url() ?>/public/img/yokohama/yokohama-card-bg-4.jpg" alt="yokohama-city">
+                                                            <div class="inner snip1190">
+                                                                <img src="<?php echo base_url() ?>/public/img/yokohama/yokohama-card-bg-4.jpg" alt="yokohama-city">
+                                                                <figcaption>
+                                                                    <div class="square">
+                                                                        <div></div>
+                                                                    </div>
+                                                                    <h2>Yokohama Landmark Tower
+                                                                    </h2>
+                                                                    <p>
+                                                                        Minato Mirai at night (the Landmark Tower and
+                                                                        Cosmo World Ferris Wheel)
+                                                                    </p>
+                                                                </figcaption>
+                                                            </div>
                                                         </div>
 
                                                         <div class="city-info face back">
@@ -157,7 +175,17 @@
                                                 <div class="city-details-flip flip">
                                                     <div class="detail-box">
                                                         <div class="city-bg face front">
-                                                            <img src="<?php echo base_url() ?>/public/img/kyoto/kyoto-card-bg-2.jpg" alt="kyoto-golden-pavilion">
+                                                            <div class="inner snip1190">
+                                                                <img src="<?php echo base_url() ?>/public/img/kyoto/kyoto-card-bg-2.jpg" alt="kyoto-golden-pavilion">
+                                                                <figcaption>
+                                                                    <div class="square">
+                                                                        <div></div>
+                                                                    </div>
+                                                                    <h2>Kinkakuji <span>(Golden Pavilion)</span>
+                                                                    </h2>
+                                                                    <p>Zen Temple in North Kyoto</p>
+                                                                </figcaption>
+                                                            </div>
                                                         </div>
 
                                                         <div class="city-info face back">
@@ -200,7 +228,18 @@
                                                 <div class="city-details-flip flip">
                                                     <div class="detail-box">
                                                         <div class="city-bg face front">
-                                                            <img src="<?php echo base_url() ?>/public/img/osaka/osaka-card-bg-1.jpg" alt="osaka-cherry-blossom-tree">
+                                                            <div class="inner snip1190">
+                                                                <img src="<?php echo base_url() ?>/public/img/osaka/osaka-card-bg-1.jpg" alt="osaka-cherry-blossom-tree">
+                                                                <figcaption>
+                                                                    <div class="square">
+                                                                        <div></div>
+                                                                    </div>
+                                                                    <h2>Osaka Castle Park<span> (Osakajo)</span>
+                                                                    </h2>
+                                                                    <p>A park with cherry blossom trees that blooms in
+                                                                        early April</p>
+                                                                </figcaption>
+                                                            </div>
                                                         </div>
 
                                                         <div class="city-info face back">
@@ -240,7 +279,18 @@
                                                 <div class="city-detail-flip flip">
                                                     <div class="detail-box">
                                                         <div class="city-bg face front">
-                                                            <img src="<?php echo base_url() ?>/public/img/sapporo/sapporo-card-bg-6.jpg" alt="sapporo jozankei onsen">
+                                                            <div class="inner snip1190">
+                                                                <img src="<?php echo base_url() ?>/public/img/sapporo/sapporo-card-bg-6.jpg" alt="sapporo jozankei onsen">
+                                                                <figcaption>
+                                                                    <div class="square">
+                                                                        <div></div>
+                                                                    </div>
+                                                                    <h2>Jozankei Onsen<span> Sapporo</span>
+                                                                    </h2>
+                                                                    <p>One of the most popular hot spring districts in
+                                                                        Hokkaido</p>
+                                                                </figcaption>
+                                                            </div>
                                                         </div>
 
                                                         <div class="city-info face back">
@@ -279,7 +329,17 @@
                                                 <div class="city-detail-flip flip">
                                                     <div class="detail-box">
                                                         <div class="city-bg face front">
-                                                            <img src="<?php echo base_url() ?>/public/img/nagoya/nagoya-card-bg-5.jpg" alt="nagoya-tv-tower">
+                                                            <div class="inner snip1190">
+                                                                <img src="<?php echo base_url() ?>/public/img/nagoya/nagoya-card-bg-5.jpg" alt="nagoya-tv-tower">
+                                                                <figcaption>
+                                                                    <div class="square">
+                                                                        <div></div>
+                                                                    </div>
+                                                                    <h2>Nagoya TV Tower
+                                                                    </h2>
+                                                                    <p>Tower resembling the Eiffel Tower in Paris</p>
+                                                                </figcaption>
+                                                            </div>
                                                         </div>
 
                                                         <div class="city-info face back">
@@ -325,3 +385,21 @@
 </body>
 
 </html>
+
+
+
+<!-- place inside content div -->
+<!-- Modals --->
+
+<!-- <div id="popup" class="modal-box">
+                    <div class="modal-header">
+                        <i class="fas fa-times js-modal-close close"></i>
+
+                    </div>
+                    <div class="modal-body">
+                        <h3>Modal Body</h3>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div> -->
