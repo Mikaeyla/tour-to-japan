@@ -10,9 +10,9 @@ html, body{
     z-index: 2;
     font-family: 'Poppins', sans-serif;
 
-    // &.modal-active {
+    /* // &.modal-active {
     //   overflow: hidden;
-    // }
+    // } */
 }
 
 .wrapper {
@@ -53,7 +53,7 @@ html, body{
 #top-background div {
     display: flex;
     /* display: contents; */
-    // position: relative;
+    /* // position: relative; */
 }
 
 #top-background div .bg-img {
@@ -296,7 +296,7 @@ html, body{
       font-size: 24px;
   }
 
-  #modal-container {
+  /* #modal-container {
     position:fixed;
     display:table;
     height:100%;
@@ -529,7 +529,7 @@ html, body{
       }
     }
   }
-  
+   */
   
   @keyframes unfoldIn {
     0% {
@@ -906,9 +906,9 @@ html, body{
     -webkit-transform: translateY(50%);
     transform: translateY(50%);
   }
-  .snip1190 h2 span {
+  /* .snip1190 h2 span {
     font-weight: 800;
-  }
+  } */
   .snip1190 p {
     position: absolute;
     top: 0;
@@ -1097,9 +1097,9 @@ html, body{
   */
 
   @media (min-width: 320px) {
-    .row {
-      display: block !important;
-    }
+    /* .row {
+      display: block;
+    } */
     #top-background h1#page-title {
       margin-left: -5px;
     }

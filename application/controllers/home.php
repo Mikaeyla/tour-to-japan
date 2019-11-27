@@ -33,6 +33,9 @@ class Home extends CI_Controller
         $this->template->set('title', 'about');
         $this->template->load('default_layout', 'contents', 'about', $data);
     }
+
+
+    
 }
  
 /* End of file welcome.php */

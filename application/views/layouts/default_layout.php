@@ -1,3 +1,102 @@
+ <!--
+     Using Openweather Map API
+ -->
+<?php
+date_default_timezone_set('Asia/Tokyo');
+$apiKey = "0464f9af0ec513f24d901e6993346a4b";
+$cityIds = array(
+    1850147,
+    1848354,
+    1857910,
+    1853909,
+    2128295,
+    1856057
+);
+$cityNames = array(
+    'Tokyo',
+    'Yokohama',
+    'Kyoto',
+    'Osaka',
+    'Sapporo',
+    'Nagoya'
+);
+$countryCode = "JP";
+
+$googleApiUrl = "http://api.openweathermap.org/data/2.5/weather?id=" . $cityIds[0] . "&lang=en&units=metric&APPID=" . $apiKey;
+// $googleApiUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" . $cityNames[0] . ", ". $countryCode ."&appId=" . $apiKey;
+// $googleApiUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" . $cityNames[0] . ", ". $countryCode . "&lang=en&units=metric&APPID=" . $apiKey;;
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+$response = curl_exec($ch);
+
+curl_close($ch);
+$data = json_decode($response);
+$currentTime = time();
+?>
+
+<!--
+    Using Foursquare API
+-->
+
+<?php
+//Foursquare Venue Search API Sample
+//API Documentation available at https://developer.foursquare.com/docs/venues/search
+//Retrieve data sent from your application
+//This connects to AngularJS, however depending on your application you ay need to retrieve from $_POST
+//Required parameter
+//Latitude
+//Longitude
+//Limit (max is 50 per request)
+//Optional param
+//Offset - For pagination of results
+$foursquare = get_foursquare_data($data);
+echo $foursquare;
+
+function get_foursquare_data($data)
+{
+    $arrayCities = array(
+        'Tokyo',
+        'Yokohama',
+        'Kyoto',
+        'Osaka',
+        'Sapporo',
+        'Nagoya'
+    );
+    $secret = 'PLW5WN1VV3MZRJ3YDBBQBEHONH1AN0J2HQXQWVQEW1QNPAEU';
+    $cid = 'EGRIXVHSNPWUBUWPWNUAYSIX045MHC5MT112Y2YF0JA1AVTT';
+    $host = "https://api.foursquare.com/v2/venues/search";
+    $ver = '20191128';
+    $categoryId= '4deefb944765f83613cdba6e';
+
+    $url = $host . "search?near=" . $arrayCities[0] . ", JP&limit=5&categoryId" . $categoryId . "&client_id=" . $cid . "&client_secret=" . $secret . "&v=" . $ver;
+    
+    //Final URL Example
+    //https://api.foursquare.com/v2/venues/search?ll=37.8141,144.9633&limit=1&offset=1&client_id=FOURSQUARE_CLIENTID&client_secret=FOURSQUARE_SECRET&v=20160510
+    
+    // initiate curl
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($ch, CURLOPT_VERBOSE, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $response = curl_exec($ch);
+    
+    curl_close($ch);
+    $data = json_decode($response);
+    return $data;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,19 +108,14 @@
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(''); ?>/public/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/css/style.scss">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/css/style.css">
     <link rel="icon" type="image/x-icon" href="<?php echo base_url() ?>/public/img/tour-to-japan-logo.png" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>/public/common/fontawesome-free/css/all.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>/public/css/modalanimate.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- page specific plugin styles -->
 
     <!-- scripts -->
-
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Remember to include jQuery :) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -37,10 +131,19 @@
                     <div class="bg-img-mask w100 p-absolute"></div>
                 </div>
 
-                <h1 id="page-title" class="toptext p-absolute w100 std-align main red" style="z-index:20;">
-                    Japan <br>
-                    Endless Discovery
-                </h1>
+                <div class="top-heading">
+                    <!-- <h1 id="page-title" class="toptext p-absolute w100 std-align main red" style="z-index:20;">
+                        Japan: Land of the Rising Sun <br>
+                        <span class="subtitle-heading">Endless Discovery</span>
+                    </h1> -->
+                    <div class="container">
+                        <div class="row">
+                            <h1 id="page-title" class="toptext p-absolute w100 std-align main-heading red" style="z-index:20;">
+                                Japan. Endless Discovery
+                            </h1>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -89,10 +192,8 @@
                                                                 Address: 2 Chome-3-1 Asakusa, Taito, Tokyo 111-0032
                                                             </span>
 
-                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn" data-modal-id="popup">
-                                                                <span>
-                                                                    See more
-                                                                </span>
+                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                                <span>See more</span>
                                                             </div>
 
 
@@ -145,10 +246,8 @@
                                                                 entertainment, and gourmet.
                                                             </span>
 
-                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
-                                                                <span>
-                                                                    See more
-                                                                </span>
+                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                                <span>See more</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -196,10 +295,8 @@
                                                                 Samurai, Zen and Shinden.
                                                             </span>
 
-                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
-                                                                <span>
-                                                                    See more
-                                                                </span>
+                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                                <span>See more</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -249,10 +346,8 @@
                                                                 of the blossoms, which are lit up by around 600 paper lanterns.
                                                             </span>
 
-                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
-                                                                <span>
-                                                                    See more
-                                                                </span>
+                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                                <span>See more</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -299,10 +394,8 @@
                                                                 history and popularity that continues to charm
                                                             </span>
 
-                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
-                                                                <span>
-                                                                    See more
-                                                                </span>
+                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                                <span>See more</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -350,10 +443,8 @@
                                                                 of its kind in Japan.
                                                             </span>
 
-                                                            <div id="seeMoreDiv six" class="see-more-container button see-more-btn">
-                                                                <span>
-                                                                    See more
-                                                                </span>
+                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                                <span>See more</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -370,36 +461,61 @@
         </div>
 
         <!-- Modal -->
-        <div id="modal-container">
-            <div class="modal-background">
-                <div class="modal">
-                    <h2>I'm a <a href="https://www.jqueryscript.net/tags.php?/Modal/">Modal</a></h2>
-                    <p>Hear me roar.</p>
-                    <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-                        <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-                    </svg>
+        <div id="popup" class="modal-box">
+            <div class="modal-header">
+                <span>
+                    <img src="<?php echo base_url() ?>/public/img/tour-tips.png" alt="tour-tips-icon" width="40" height="40">
+                    <span style="font-size: 24px;">
+                        Tour Tips
+                    </span>
+                </span>
+                <i class="fas fa-times js-modal-close close"></i>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="caption-modal-heading">
+                                <span>
+                                    <?php echo $data->name; ?> Weather Status
+                                </span>
+                            </div>
+                            <div class="weather-forecast">
+                                <img src="http://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png" class="weather-icon" /> <span>
+                                    <?php echo ucwords($data->weather[0]->description); ?>
+                                </span>
+                                <br>
+                                <span>
+                                    Temperature: <?php echo $data->main->temp; ?>°C<br>
+                                </span>
+                                <?php echo $data->main->temp_max; ?>°C<span class="min-temperature"><?php echo $data->main->temp_min; ?>°C</span>
+
+                            </div>
+                            <div class="time">
+                                <div>Humidity: <?php echo $data->main->humidity; ?> %</div>
+                                <div>Wind: <?php echo $data->wind->speed; ?> km/h</div>
+                            </div>
+                            <div class="time">
+                                <div><?php echo date("l g:i a", $currentTime); ?></div>
+                                <div><?php echo date("jS F, Y", $currentTime); ?></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="place-info">
+                                <h4>
+                                    Places to Visit
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
+            <div class="modal-footer">
+
             </div>
         </div>
     </div>
 </body>
 
 </html>
-
-
-
-<!-- place inside content div -->
-<!-- Modals --->
-
-<!-- <div id="popup" class="modal-box">
-                    <div class="modal-header">
-                        <i class="fas fa-times js-modal-close close"></i>
-
-                    </div>
-                    <div class="modal-body">
-                        <h3>Modal Body</h3>
-                    </div>
-                    <div class="modal-footer">
-
-                    </div>
-                </div> -->
