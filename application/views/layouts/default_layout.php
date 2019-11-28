@@ -1,102 +1,3 @@
- <!--
-     Using Openweather Map API
- -->
-<?php
-date_default_timezone_set('Asia/Tokyo');
-$apiKey = "0464f9af0ec513f24d901e6993346a4b";
-$cityIds = array(
-    1850147,
-    1848354,
-    1857910,
-    1853909,
-    2128295,
-    1856057
-);
-$cityNames = array(
-    'Tokyo',
-    'Yokohama',
-    'Kyoto',
-    'Osaka',
-    'Sapporo',
-    'Nagoya'
-);
-$countryCode = "JP";
-
-$googleApiUrl = "http://api.openweathermap.org/data/2.5/weather?id=" . $cityIds[0] . "&lang=en&units=metric&APPID=" . $apiKey;
-// $googleApiUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" . $cityNames[0] . ", ". $countryCode ."&appId=" . $apiKey;
-// $googleApiUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" . $cityNames[0] . ", ". $countryCode . "&lang=en&units=metric&APPID=" . $apiKey;;
-
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_VERBOSE, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-$response = curl_exec($ch);
-
-curl_close($ch);
-$data = json_decode($response);
-$currentTime = time();
-?>
-
-<!--
-    Using Foursquare API
--->
-
-<?php
-//Foursquare Venue Search API Sample
-//API Documentation available at https://developer.foursquare.com/docs/venues/search
-//Retrieve data sent from your application
-//This connects to AngularJS, however depending on your application you ay need to retrieve from $_POST
-//Required parameter
-//Latitude
-//Longitude
-//Limit (max is 50 per request)
-//Optional param
-//Offset - For pagination of results
-$foursquare = get_foursquare_data($data);
-echo $foursquare;
-
-function get_foursquare_data($data)
-{
-    $arrayCities = array(
-        'Tokyo',
-        'Yokohama',
-        'Kyoto',
-        'Osaka',
-        'Sapporo',
-        'Nagoya'
-    );
-    $secret = 'PLW5WN1VV3MZRJ3YDBBQBEHONH1AN0J2HQXQWVQEW1QNPAEU';
-    $cid = 'EGRIXVHSNPWUBUWPWNUAYSIX045MHC5MT112Y2YF0JA1AVTT';
-    $host = "https://api.foursquare.com/v2/venues/search";
-    $ver = '20191128';
-    $categoryId= '4deefb944765f83613cdba6e';
-
-    $url = $host . "search?near=" . $arrayCities[0] . ", JP&limit=5&categoryId" . $categoryId . "&client_id=" . $cid . "&client_secret=" . $secret . "&v=" . $ver;
-    
-    //Final URL Example
-    //https://api.foursquare.com/v2/venues/search?ll=37.8141,144.9633&limit=1&offset=1&client_id=FOURSQUARE_CLIENTID&client_secret=FOURSQUARE_SECRET&v=20160510
-    
-    // initiate curl
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_VERBOSE, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    $response = curl_exec($ch);
-    
-    curl_close($ch);
-    $data = json_decode($response);
-    return $data;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,10 +33,6 @@ function get_foursquare_data($data)
                 </div>
 
                 <div class="top-heading">
-                    <!-- <h1 id="page-title" class="toptext p-absolute w100 std-align main red" style="z-index:20;">
-                        Japan: Land of the Rising Sun <br>
-                        <span class="subtitle-heading">Endless Discovery</span>
-                    </h1> -->
                     <div class="container">
                         <div class="row">
                             <h1 id="page-title" class="toptext p-absolute w100 std-align main-heading red" style="z-index:20;">
@@ -192,7 +89,8 @@ function get_foursquare_data($data)
                                                                 Address: 2 Chome-3-1 Asakusa, Taito, Tokyo 111-0032
                                                             </span>
 
-                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                            <div class="see-more-container js-open-modal"
+                                                                id="Tokyo|1850147" data-modal-id="popup">
                                                                 <span>See more</span>
                                                             </div>
 
@@ -246,7 +144,8 @@ function get_foursquare_data($data)
                                                                 entertainment, and gourmet.
                                                             </span>
 
-                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                            <div class="see-more-container" id="Yokohama|1848354"
+                                                                data-modal-id="popup">
                                                                 <span>See more</span>
                                                             </div>
                                                         </div>
@@ -295,7 +194,8 @@ function get_foursquare_data($data)
                                                                 Samurai, Zen and Shinden.
                                                             </span>
 
-                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                            <div class="see-more-container" id="Kyoto|1857910"
+                                                                data-modal-id="popup">
                                                                 <span>See more</span>
                                                             </div>
                                                         </div>
@@ -346,7 +246,8 @@ function get_foursquare_data($data)
                                                                 of the blossoms, which are lit up by around 600 paper lanterns.
                                                             </span>
 
-                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                            <div class="see-more-container" id="Osaka|1853909"
+                                                                data-modal-id="popup">
                                                                 <span>See more</span>
                                                             </div>
                                                         </div>
@@ -394,7 +295,8 @@ function get_foursquare_data($data)
                                                                 history and popularity that continues to charm
                                                             </span>
 
-                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                            <div class="see-more-container" id="Sapporo|2128295"
+                                                                data-modal-id="popup">
                                                                 <span>See more</span>
                                                             </div>
                                                         </div>
@@ -443,7 +345,8 @@ function get_foursquare_data($data)
                                                                 of its kind in Japan.
                                                             </span>
 
-                                                            <div class="see-more-container js-open-modal" id="seeMoreDiv" data-modal-id="popup">
+                                                            <div class="see-more-container" id="Nagoya|1856057"
+                                                                data-modal-id="popup">
                                                                 <span>See more</span>
                                                             </div>
                                                         </div>
@@ -460,11 +363,13 @@ function get_foursquare_data($data)
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Modals --->
+
         <div id="popup" class="modal-box">
             <div class="modal-header">
                 <span>
-                    <img src="<?php echo base_url() ?>/public/img/tour-tips.png" alt="tour-tips-icon" width="40" height="40">
+                    <img src="C://Users/81100612/PracticeDemoTest/japan-tour/assets/img/tour-tips.png"
+                        alt="tour-tips-icon" width="40" height="40">
                     <span style="font-size: 24px;">
                         Tour Tips
                     </span>
@@ -473,42 +378,42 @@ function get_foursquare_data($data)
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="caption-modal-heading">
-                                <span>
-                                    <?php echo $data->name; ?> Weather Status
-                                </span>
-                            </div>
-                            <div class="weather-forecast">
-                                <img src="http://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png" class="weather-icon" /> <span>
-                                    <?php echo ucwords($data->weather[0]->description); ?>
-                                </span>
-                                <br>
-                                <span>
-                                    Temperature: <?php echo $data->main->temp; ?>°C<br>
-                                </span>
-                                <?php echo $data->main->temp_max; ?>°C<span class="min-temperature"><?php echo $data->main->temp_min; ?>°C</span>
+                    <div class="row" id="city-name-heading">
 
-                            </div>
-                            <div class="time">
-                                <div>Humidity: <?php echo $data->main->humidity; ?> %</div>
-                                <div>Wind: <?php echo $data->wind->speed; ?> km/h</div>
-                            </div>
-                            <div class="time">
-                                <div><?php echo date("l g:i a", $currentTime); ?></div>
-                                <div><?php echo date("jS F, Y", $currentTime); ?></div>
+                    </div>
+                    <div class="card weather-forecast-card">
+                        <div class="card-header weather-card-header">
+                            <div class="card-title weather-card-title">
+                                <div id="weather-status-heading">
+
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="place-info">
-                                <h4>
-                                    Places to Visit
-                                </h4>
+                        <div class="card-body">
+                            <div class="card-content">
+                                <div class="row" id="list-weather-icons">
+
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="card">
+                        <div class="card-header places-card-header">
+                            <div class="card-title places-card-title">
+                                <div id="venue-heading">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-content">
+                                <div class="row" id="list-places">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
