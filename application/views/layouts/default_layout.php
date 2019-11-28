@@ -368,7 +368,7 @@
         <div id="popup" class="modal-box">
             <div class="modal-header">
                 <span>
-                    <img src="C://Users/81100612/PracticeDemoTest/japan-tour/assets/img/tour-tips.png"
+                    <img src="<?php echo base_url() ?>/public/img/tour-tips.png"
                         alt="tour-tips-icon" width="40" height="40">
                     <span style="font-size: 24px;">
                         Tour Tips

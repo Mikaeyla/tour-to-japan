@@ -539,9 +539,6 @@ a.close:hover {
 */
 
 @media (min-width: 320px) {
-  .row {
-    display: block;
-  }
   #top-background h1#page-title {
     margin-left: -5px;
   }
